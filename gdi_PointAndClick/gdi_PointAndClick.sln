@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gdi_PointAndClick", "gdi_PointAndClick\gdi_PointAndClick.csproj", "{B873212C-F9A9-4874-B88F-871C2A35C1A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B873212C-F9A9-4874-B88F-871C2A35C1A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B873212C-F9A9-4874-B88F-871C2A35C1A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B873212C-F9A9-4874-B88F-871C2A35C1A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B873212C-F9A9-4874-B88F-871C2A35C1A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0219CBE0-65C2-464F-BD21-A8590D6BE79F}
+	EndGlobalSection
+EndGlobal
