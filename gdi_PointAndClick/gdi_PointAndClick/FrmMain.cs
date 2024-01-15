@@ -1,53 +1,67 @@
-using System.Collections.Generic; // benötigt für Listen
+namespace gdi_PointAndClick;
 
-namespace gdi_PointAndClick
+using System.Security.Cryptography;
+
+public sealed partial class FrmMain : Form
 {
-    public partial class FrmMain : Form
+    private readonly List<Drawable> _drawables;
+
+    public FrmMain()
     {
-        List<Rectangle> rectangles = new List<Rectangle>();
+        InitializeComponent();
+        var screen = Screen.FromControl(this).WorkingArea;
+        ClientSize = new((int)((screen.Width + screen.X) * 0.75), (int)((screen.Height + screen.Y) * 0.70));
+        ResizeRedraw = true;
 
-        public FrmMain()
+        _drawables = new();
+    }
+
+    protected override void OnKeyUp(KeyEventArgs args)
+    {
+        base.OnKeyUp(args);
+
+        if (args.KeyCode is not Keys.Escape) return;
+
+        _drawables.Clear();
+        Update();
+    }
+
+    protected override void OnMouseClick(MouseEventArgs args)
+    {
+        base.OnMouseClick(args);
+
+    }
+
+    protected override void OnPaint(PaintEventArgs args)
+    {
+        base.OnPaint(args);
+
+        foreach (var drawable in _drawables)
         {
-            InitializeComponent();
-            ResizeRedraw = true;
+            args.Graphics.FillRectangle(drawable.Brush, drawable.Rectangle);
         }
+    }
 
-        private void FrmMain_Paint(object sender, PaintEventArgs e)
+    private static Drawable GetRandomDrawable(int maxWidth, int maxHeight, bool strongRandom)
+    {
+        int x, y, width, height;
+
+
+
+        return new Drawable
         {
-            // Hilfsvarablen
-            Graphics g = e.Graphics;
-            int w = this.ClientSize.Width;
-            int h = this.ClientSize.Height;
+            Brush = new SolidBrush(GetRandomColor(strongRandom)),
+            Rectangle = new Rectangle()
+        };
+    }
 
-            // Zeichenmittel
-            Brush b = new SolidBrush(Color.Lavender);
+    private static Color GetRandomColor(bool strongRandom)
+    {
+        Span<byte> rgb = stackalloc byte[3];
 
+        if (strongRandom) RandomNumberGenerator.Fill(rgb);
+        else Random.Shared.NextBytes(rgb);
 
-            for (int i = 0; i < rectangles.Count; i++)
-            {
-                g.FillRectangle(b, rectangles[i]);
-            }
-
-        }
-
-        private void FrmMain_MouseClick(object sender, MouseEventArgs e)
-        {
-            Point mausposition = e.Location;
-
-            Rectangle r = new Rectangle(mausposition.X, mausposition.Y, 40, 40);
-
-            rectangles.Add(r);  // Kurze Variante: rectangles.Add( new Rectangle(...)  );
-
-            Refresh();
-        }
-
-        private void FrmMain_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                rectangles.Clear();
-                Refresh();
-            }
-        }
+        return Color.FromArgb(rgb[0], rgb[1], rgb[2]);
     }
 }

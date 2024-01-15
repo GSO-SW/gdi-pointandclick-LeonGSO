@@ -28,20 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
+            SuspendLayout();
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1203, 728);
-            this.Name = "FrmMain";
-            this.Text = "Point and Click";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FrmMain_Paint);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmMain_KeyDown);
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseClick);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(740, 455);
+            Margin = new Padding(2);
+            Name = "FrmMain";
+            ShowIcon = false;
+            Text = "Point and Click";
+            ResumeLayout(false);
         }
 
         #endregion
